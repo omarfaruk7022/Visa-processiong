@@ -5,7 +5,7 @@ const DashboardHome = () => {
   return (
     <div>
        
-     <div className="grid grid-cols-3 gap-5  mt-12">
+     <div className="grid lg:grid-cols-3 gap-5 grid-cols-1 mt-12">
      <Link
        to="/dashboard/companies"
         class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"

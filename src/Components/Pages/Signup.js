@@ -43,6 +43,7 @@ const Signup = () => {
       name,
     };
     if (error) {
+      swal("Error", error.message, "error");
         return;
       } else {
         await createUserWithEmailAndPassword(data.email, data.password);
