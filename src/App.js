@@ -1,7 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Companies from "./Components/Pages/Dashboard/Companies";
+import Completed from "./Components/Pages/Dashboard/Completed";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
 import DashboardHome from "./Components/Pages/Dashboard/DashboardHome";
+import PriceFixed from "./Components/Pages/Dashboard/PriceFixed";
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
 import Navbar from "./Components/Pages/Navbar";
@@ -26,6 +29,9 @@ function App() {
           }
         >
           <Route index element={<DashboardHome />} />
+          <Route path="companies" element={<Companies />} />
+          <Route path="completed" element={<Completed />} />
+          <Route path="fixed" element={<PriceFixed />} />
         </Route>
       </Routes>
     </div>

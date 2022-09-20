@@ -39,10 +39,37 @@ const Dashboard = () => {
             <li>
               <Link
                 to="/dashboard"
-                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] "
+                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200 my-2 "
               >
                 {" "}
-                Profile Info
+                Dashboard 
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/companies"
+                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200  my-2"
+              >
+                {" "}
+               Company
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/completed"
+                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200  my-2"
+              >
+                {" "}
+                Completed
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/fixed"
+                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200 my-2 "
+              >
+                {" "}
+                Fixed
               </Link>
             </li>
             {/* <li>
