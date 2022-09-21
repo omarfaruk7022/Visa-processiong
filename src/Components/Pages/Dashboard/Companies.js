@@ -29,19 +29,16 @@ const Companies = () => {
     e.preventDefault();
     const name = e.target.companyName.value;
     const address = e.target.companyAddress.value;
-    const vacancy =Number( e.target.vacancy.value);
-    const salary =Number(e.target.companySalary.value);
+    const vacancy = Number(e.target.vacancy.value);
+    const salary = Number(e.target.companySalary.value);
     const maleFemale = e.target.maleFemale.value;
-
-
-
 
     const inputData = {
       name,
       address,
       vacancy,
       salary,
-      
+
       maleFemale,
     };
     console.log(inputData);
@@ -88,11 +85,20 @@ const Companies = () => {
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" class="py-3 px-6">
-                  Product name
+                  Company name
                 </th>
 
                 <th scope="col" class="py-3 px-6">
                   Address
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Vacancy
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Male/Female
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
                   Action
@@ -111,6 +117,9 @@ const Companies = () => {
                     </th>
                     <td class="py-4 px-6">{data?.address}</td>
 
+                    <td class="py-4 px-6">{data?.vacancy}</td>
+                    <td class="py-4 px-6">{data?.maleFemale}</td>
+                    <td class="py-4 px-6">{data?.salary}</td>
                     <td class="py-4 px-6">
                       <Link
                         to={`/companyStatus/${data?._id}`}
@@ -128,7 +137,7 @@ const Companies = () => {
       </div>
       <div>
         <label htmlFor="my-modal-6" className="btn modal-button">
-          Add company
+          Add Job Order
         </label>
 
         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -187,7 +196,6 @@ const Companies = () => {
               </div> */}
               </div>
               <div>
-                
                 <div className="form-control w-[200px]">
                   <label className="label">
                     <span className="label-text text-green-400">
@@ -204,9 +212,9 @@ const Companies = () => {
               </div>
 
               <div>
-              <div className="">
+                <div className="">
                   <label class="sr-only" for="email">
-                   Salary range
+                    Salary range
                   </label>
                   <input
                     name="companySalary"
@@ -216,7 +224,6 @@ const Companies = () => {
                     id="salary"
                   />
                 </div>
-                
               </div>
 
               <button type="submit" className="btn btn-primary">

@@ -44,21 +44,21 @@ const Signup = () => {
     };
     if (error) {
       swal("Error", error.message, "error");
-        return;
-      } else {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userSignupData), 
-        })
-          .then((res) => res.json())
-          .then((data) => {});
-  
-        swal("Yayy", "Sign Up  Successfully Completed ", "success");
-      }
+      return;
+    } else {
+      await createUserWithEmailAndPassword(data.email, data.password);
+      fetch("https://visa-processing.onrender.com/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userSignupData),
+      })
+        .then((res) => res.json())
+        .then((data) => {});
+
+      swal("Yayy", "Sign Up  Successfully Completed ", "success");
+    }
   };
   return (
     <div className="lg:flex justify-center items-center h-screen ">
@@ -164,7 +164,7 @@ const Signup = () => {
           type="submit"
           class="text-white bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-         Sign up
+          Sign up
         </button>
       </form>
     </div>

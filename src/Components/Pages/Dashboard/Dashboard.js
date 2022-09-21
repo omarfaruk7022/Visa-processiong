@@ -11,7 +11,7 @@ const Dashboard = () => {
   //   const [user] = useAuthState(auth);
   //   const email = user.email
   //   useEffect(() => {
-  //     fetch(`http://localhost:5000/profile/${email}`)
+  //     fetch(`https://visa-processing.onrender.com/profile/${email}`)
   //       .then((res) => res.json())
   //       .then((data) => setProfileInfo(data?.data));
 
@@ -35,14 +35,13 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label for="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-70 bg-base-100 text-base-content">
-            
             <li>
               <Link
                 to="/dashboard"
                 className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200 my-2 "
               >
                 {" "}
-                Dashboard 
+                Dashboard
               </Link>
             </li>
             <li>
@@ -51,7 +50,7 @@ const Dashboard = () => {
                 className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200  my-2"
               >
                 {" "}
-               Company
+                Company
               </Link>
             </li>
             <li>
