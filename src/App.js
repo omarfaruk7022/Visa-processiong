@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Companies from "./Components/Pages/Dashboard/Companies";
+import CompanyStatus from "./Components/Pages/Dashboard/CompanyStatus";
 import Completed from "./Components/Pages/Dashboard/Completed";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
 import DashboardHome from "./Components/Pages/Dashboard/DashboardHome";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
+        <Route path="companyStatus/:id" element={<CompanyStatus />} />
         <Route
           path="dashboard"
           element={
