@@ -21,7 +21,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        <Route path="companyStatus/:id" element={<CompanyStatus />} />
+        <Route
+          path="companyStatus/:id"
+          element={
+            <RequireAuth>
+              <CompanyStatus />
+            </RequireAuth>
+          }
+        />
         <Route
           path="dashboard"
           element={
@@ -30,22 +37,8 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route
-            index
-            element={
-              <RequireAuth>
-                <DashboardHome />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="companies"
-            element={
-              <RequireAuth>
-                <Companies />
-              </RequireAuth>
-            }
-          />
+          <Route index element={<DashboardHome />} />
+          <Route path="companies" element={<Companies />} />
           <Route
             path="completed"
             element={

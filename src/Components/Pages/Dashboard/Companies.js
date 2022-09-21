@@ -4,34 +4,45 @@ import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import auth from "../../../firebase.init";
-import Loader from "../Loader"
+import Loader from "../Loader";
 
 const Companies = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-    const {
-        data: companyData,
-        isLoading,
-        refetch,
-      } = useQuery("companyData", () =>
-        fetch("https://visa-processing.onrender.com/companies/", {
-          method: "GET",
-        }).then((res) => res.json())
-        .then((data) => {
-          return data;
-        })
-        );
-        refetch();
-    
-//   const [companyData, setCompanyData] = useState();
+  const {
+    data: companyData,
+    isLoading,
+    refetch,
+  } = useQuery("companyData", () =>
+    fetch("https://visa-processing.onrender.com/companies/", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      })
+  );
+  refetch();
+
+  //   const [companyData, setCompanyData] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.companyName.value;
     const address = e.target.companyAddress.value;
+    const vacancy =Number( e.target.vacancy.value);
+    const salary =Number(e.target.companySalary.value);
+    const maleFemale = e.target.maleFemale.value;
+
+
+
 
     const inputData = {
       name,
       address,
+      vacancy,
+      salary,
+      
+      maleFemale,
     };
     console.log(inputData);
     if (name && address) {
@@ -47,28 +58,27 @@ const Companies = () => {
           console.log(data);
           swal("Yayy", "Company Added Successfully", "success");
         });
-       
     }
-   
+
     e.target.reset();
   };
 
-//   useEffect(() => {
-//     fetch("https://visa-processing.onrender.com/companies")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setCompanyData(data);
-//         refetch()
-//     });
-// }, []);
+  //   useEffect(() => {
+  //     fetch("https://visa-processing.onrender.com/companies")
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setCompanyData(data);
+  //         refetch()
+  //     });
+  // }, []);
 
   console.log(companyData);
-  if(isLoading){
-    return <Loader/>
+  if (isLoading) {
+    return <Loader />;
   }
 
-  if(!user){
-    navigate('/login')
+  if (!user) {
+    navigate("/login");
   }
   return (
     <div>
@@ -80,7 +90,7 @@ const Companies = () => {
                 <th scope="col" class="py-3 px-6">
                   Product name
                 </th>
-               
+
                 <th scope="col" class="py-3 px-6">
                   Address
                 </th>
@@ -100,13 +110,13 @@ const Companies = () => {
                       {data?.name}
                     </th>
                     <td class="py-4 px-6">{data?.address}</td>
-                    
+
                     <td class="py-4 px-6">
                       <Link
-                       to={`/companyStatus/${data?._id}`}
+                        to={`/companyStatus/${data?._id}`}
                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
-                       Check Status
+                        Check Status
                       </Link>
                     </td>
                   </tr>
@@ -150,6 +160,19 @@ const Companies = () => {
                     id="address"
                   />
                 </div>
+                <div className="">
+                  <label class="sr-only" for="email">
+                    Amount of vacancy
+                  </label>
+                  <input
+                    name="companyVacancy"
+                    class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
+                    placeholder="Vacancy"
+                    type="number"
+                    id="vacancy"
+                  />
+                </div>
+
                 {/* <div>
                 <label class="sr-only" for="email">
                   Vacancy/Visa
@@ -162,6 +185,38 @@ const Companies = () => {
                   id="vacancy"
                 />
               </div> */}
+              </div>
+              <div>
+                
+                <div className="form-control w-[200px]">
+                  <label className="label">
+                    <span className="label-text text-green-400">
+                      Male/Female
+                    </span>
+                  </label>
+                  <select name="maleFemale" className="select select-bordered">
+                    <option default>Select a status</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Both</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+              <div className="">
+                  <label class="sr-only" for="email">
+                   Salary range
+                  </label>
+                  <input
+                    name="companySalary"
+                    class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
+                    placeholder="Salary range"
+                    type="number"
+                    id="salary"
+                  />
+                </div>
+                
               </div>
 
               <button type="submit" className="btn btn-primary">
