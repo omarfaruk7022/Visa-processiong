@@ -1,9 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import auth from "../../../firebase.init";
+import Loader from "../Loader"
 
 const Companies = () => {
-  const [companyData, setCompanyData] = useState();
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+    const {
+        data: companyData,
+        isLoading,
+        refetch,
+      } = useQuery("companyData", () =>
+        fetch("https://visa-processing.onrender.com/companies/", {
+          method: "GET",
+        }).then((res) => res.json())
+        .then((data) => {
+          return data;
+        })
+        );
+        refetch();
+    
+//   const [companyData, setCompanyData] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.companyName.value;
@@ -15,7 +35,7 @@ const Companies = () => {
     };
     console.log(inputData);
     if (name && address) {
-      fetch("http://localhost:5000/companies", {
+      fetch("https://visa-processing.onrender.com/companies", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -27,19 +47,29 @@ const Companies = () => {
           console.log(data);
           swal("Yayy", "Company Added Successfully", "success");
         });
+       
     }
    
     e.target.reset();
   };
 
-  useEffect(() => {
-    fetch("http://localhost:5000/companies")
-      .then((res) => res.json())
-      .then((data) => {
-        setCompanyData(data);
-      });
-  }, []);
+//   useEffect(() => {
+//     fetch("https://visa-processing.onrender.com/companies")
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setCompanyData(data);
+//         refetch()
+//     });
+// }, []);
+
   console.log(companyData);
+  if(isLoading){
+    return <Loader/>
+  }
+
+  if(!user){
+    navigate('/login')
+  }
   return (
     <div>
       <div>

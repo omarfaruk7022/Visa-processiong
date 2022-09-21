@@ -30,10 +30,38 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<DashboardHome />} />
-          <Route path="companies" element={<Companies />} />
-          <Route path="completed" element={<Completed />} />
-          <Route path="fixed" element={<PriceFixed />} />
+          <Route
+            index
+            element={
+              <RequireAuth>
+                <DashboardHome />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="companies"
+            element={
+              <RequireAuth>
+                <Companies />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="completed"
+            element={
+              <RequireAuth>
+                <Completed />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="fixed"
+            element={
+              <RequireAuth>
+                <PriceFixed />
+              </RequireAuth>
+            }
+          />
         </Route>
       </Routes>
     </div>
