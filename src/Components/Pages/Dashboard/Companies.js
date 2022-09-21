@@ -42,7 +42,7 @@ const Companies = () => {
       maleFemale,
     };
     console.log(inputData);
-    if (name && address) {
+    if (name && address && vacancy && salary && maleFemale) {
       fetch("https://visa-processing.onrender.com/companies", {
         method: "PUT",
         headers: {
@@ -55,6 +55,8 @@ const Companies = () => {
           console.log(data);
           swal("Yayy", "Company Added Successfully", "success");
         });
+    } else {
+      swal("Oops", "Please fill all the fields", "error");
     }
 
     e.target.reset();
@@ -136,9 +138,17 @@ const Companies = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="my-modal-6" className="btn modal-button">
+        <button
+          class=" mt-5 inline-block px-8 py-3 text-sm font-medium text-indigo-600 border rounded transition border-current hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring hover:text-green-400"
+          href="/download"
+        >
+          <label htmlFor="my-modal-6" className=" modal-button">
+            Add Job Order
+          </label>
+        </button>
+        {/* <label htmlFor="my-modal-6" className="btn modal-button">
           Add Job Order
-        </label>
+        </label> */}
 
         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
         <div className="modal modal-bottom sm:modal-middle">
@@ -232,9 +242,7 @@ const Companies = () => {
             </form>
 
             <div className="modal-action">
-              <label htmlFor="my-modal-6" className="btn">
-                Yay!
-              </label>
+            <label htmlFor="my-modal-6" className="btn btn-sm btn-circle absolute right-2 bottom-2">✕</label>
             </div>
           </div>
         </div>

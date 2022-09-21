@@ -45,6 +45,21 @@ const CompanyStatus = () => {
         });
     }
     e.target.reset();
+
+    if (status === "Completed") {
+      fetch(`https://visa-processing.onrender.com/completed`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(statusData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          swal("Yayy", "Status Completed Successfully", "success");
+        });
+    }
   };
 
   const {
@@ -61,20 +76,16 @@ const CompanyStatus = () => {
       })
   );
   refetch();
+  console.log(statusData);
 
   if (isLoading) {
     return <Loader />;
   }
-  // useEffect(() => {
-  //   fetch(`https://visa-processing.onrender.com/companies/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setStatusData(data);
-  //     });
-  // }, [id]);
+
   if (!user) {
     navigate("/login");
   }
+
   return (
     <div className="flex justify-center items-center">
       <button
@@ -105,7 +116,7 @@ const CompanyStatus = () => {
           </>
         )}
       </button>
-      {admin?.data?.role === "admin" && (
+      {admin?.data?.role === "admin" && statusData?.status !== "Completed" && (
         <>
           <form onSubmit={handleStatus}>
             <div className="form-control w-[200px]">

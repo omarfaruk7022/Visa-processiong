@@ -47,6 +47,8 @@ const Login = () => {
   };
   return (
     <div>
+      <h1 className="text-red-400">Admin Email =farhanfaruk696@gmail.com</h1>
+      <h1 className="text-red-400">Admin Pass = 123456</h1>
       <div className="flex justify-center items-center h-screen ">
         <div className="mr-28 hidden lg:block">
           <img alt="" />
