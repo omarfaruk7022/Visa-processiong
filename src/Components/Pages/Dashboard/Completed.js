@@ -26,6 +26,7 @@ const Completed = () => {
   return (
     <div>
       <div>
+      <h1 className="text-center text-green-400 text-2xl my-5">All Completed Job Orders</h1>
         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -47,7 +48,7 @@ const Completed = () => {
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Action
+                 Status
                 </th>
               </tr>
             </thead>
@@ -66,13 +67,8 @@ const Completed = () => {
                     <td class="py-4 px-6">{data?.vacancy}</td>
                     <td class="py-4 px-6">{data?.maleFemale}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
-                    <td class="py-4 px-6">
-                      <Link
-                        to={`/companyStatus/${data?._id}`}
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        Check Status
-                      </Link>
+                    <td class="py-4 px-6 text-green-400">
+                     Completed
                     </td>
                   </tr>
                 </tbody>
