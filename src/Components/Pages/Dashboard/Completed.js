@@ -1,15 +1,37 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
 import Loader from "../Loader";
 
 const Completed = () => {
+  // const handleSubmit = (id, e) => {
+  //   e.preventDefault();
+  //   const price = e.target.price.value;
+  //   console.log(id);
+  //   const inputData = {
+  //     price,
+  //   };
+  //   if (price) {
+  //     fetch(`http://localhost:5000/companies/${id}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(inputData),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         swal("Yayy", "Status Updated Successfully", "success");
+  //       });
+  //   }
+  //   e.target.reset();
+  // };
   const {
     data: completedData,
     isLoading,
     refetch,
   } = useQuery("completedData", () =>
-    fetch("https://visa-processing.onrender.com/completed/", {
+    fetch("http://localhost:5000/completed/", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -18,15 +40,27 @@ const Completed = () => {
       })
   );
   refetch();
+ 
+  // const { data: fixedData } = useQuery("fixedData", () =>
+  //   fetch(`http://localhost:5000/comapnies/`, {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       return data;
+  //     })
+  //     );
+  //     refetch();
 
-  console.log(completedData);
   if (isLoading) {
     return <Loader />;
   }
   return (
     <div>
       <div>
-      <h1 className="text-center text-green-400 text-2xl my-5">All Completed Job Orders</h1>
+        <h1 className="text-center text-green-400 text-2xl my-5">
+          All Completed Job Orders
+        </h1>
         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -48,8 +82,12 @@ const Completed = () => {
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
-                 Status
+                  Status
                 </th>
+               
+                {/* <th scope="col" class="py-3 px-6">
+                  Fixed any price
+                </th> */}
               </tr>
             </thead>
             {completedData?.map((data) => (
@@ -67,9 +105,7 @@ const Completed = () => {
                     <td class="py-4 px-6">{data?.vacancy}</td>
                     <td class="py-4 px-6">{data?.maleFemale}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
-                    <td class="py-4 px-6 text-green-400">
-                     Completed
-                    </td>
+                    <td class="py-4 px-6 text-green-400">Completed</td>
                   </tr>
                 </tbody>
               </>

@@ -11,7 +11,7 @@ const Dashboard = () => {
   //   const [user] = useAuthState(auth);
   //   const email = user.email
   //   useEffect(() => {
-  //     fetch(`https://visa-processing.onrender.com/profile/${email}`)
+  //     fetch(`http://localhost:5000/profile/${email}`)
   //       .then((res) => res.json())
   //       .then((data) => setProfileInfo(data?.data));
 
@@ -62,15 +62,7 @@ const Dashboard = () => {
                 Completed
               </Link>
             </li>
-            <li>
-              <Link
-                to="/dashboard/fixed"
-                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200 my-2 "
-              >
-                {" "}
-                Fixed
-              </Link>
-            </li>
+            
             {/* <li>
               <Link
                 to="/dashboard/ACE"

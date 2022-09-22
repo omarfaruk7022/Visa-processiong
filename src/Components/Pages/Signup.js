@@ -47,7 +47,7 @@ const Signup = () => {
       return;
     } else {
       await createUserWithEmailAndPassword(data.email, data.password);
-      fetch("https://visa-processing.onrender.com/users", {
+      fetch("http://localhost:5000/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
