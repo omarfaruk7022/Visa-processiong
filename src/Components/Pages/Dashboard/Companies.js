@@ -134,6 +134,9 @@ const Companies = () => {
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
+                  Completed/Processing
+                </th>
+                <th scope="col" class="py-3 px-6">
                   Action
                 </th>
                 {admin?.data?.role === "admin" && (
@@ -163,6 +166,15 @@ const Companies = () => {
                     <td class="py-4 px-6">{data?.vacancy}</td>
                     <td class="py-4 px-6">{data?.maleFemale}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
+                    {
+                      data?.status ? (
+                         
+                        <td class="py-4 px-6 text-green-400">{data?.status}</td>
+                      ) : (
+                        <span className="ml-12 ">N/A</span>
+                        
+                      )
+                    }
 
                     <td class="py-4 px-6">
                       <Link
