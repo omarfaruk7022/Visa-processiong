@@ -50,7 +50,7 @@ const Dashboard = () => {
                 className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] bg-gray-200  my-2"
               >
                 {" "}
-                Company
+                Job orders
               </Link>
             </li>
             <li>
