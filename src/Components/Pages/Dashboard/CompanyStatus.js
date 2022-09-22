@@ -156,7 +156,7 @@ const CompanyStatus = () => {
             onSubmit={handleStatus}
             className="lg:flex justify-center items-center"
           >
-            <div className="form-control w-[200px]">
+            <div className="form-control w-[200px] ">
               <label className="label">
                 <span className="label-text text-green-400">Update Status</span>
               </label>
@@ -167,10 +167,10 @@ const CompanyStatus = () => {
               </select>
             </div>
 
-            <div className=" mt-10">
+            <div className="ml-2 mt-10 ">
               <button
                 type="submit"
-                className="w-[200px] btn btn-outline btn-primary"
+                className="w-[200px] btn btn-primary"
               >
                 Post
               </button>
@@ -192,7 +192,7 @@ const CompanyStatus = () => {
                   id="price"
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary ml-2">
                 Submit
               </button>
             </div>
