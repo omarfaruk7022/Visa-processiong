@@ -11,7 +11,7 @@ const Companies = () => {
   const navigate = useNavigate();
   const email = user?.email;
   const { data: admin } = useQuery("admin", () =>
-    fetch(`http://localhost:5000/users/${email}`, {
+    fetch(`https://visa-processing.onrender.com/users/${email}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -28,7 +28,7 @@ const Companies = () => {
     isLoading,
     refetch,
   } = useQuery("companyData", () =>
-    fetch("http://localhost:5000/companies/", {
+    fetch("https://visa-processing.onrender.com/companies/", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -48,7 +48,7 @@ const Companies = () => {
     }).then((willDelete) => {
       if (willDelete) {
         swal("Poof! Your file has been deleted!", {});
-        fetch(`http://localhost:5000/companies/${id}`, {
+        fetch(`https://visa-processing.onrender.com/companies/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -80,7 +80,7 @@ const Companies = () => {
     };
     console.log(inputData);
     if (name && address && vacancy && salary && maleFemale) {
-      fetch("http://localhost:5000/companies", {
+      fetch("https://visa-processing.onrender.com/companies", {
         method: "POST",
         headers: {
           "content-type": "application/json",

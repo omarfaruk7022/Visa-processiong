@@ -11,7 +11,7 @@ const Completed = () => {
   //     price,
   //   };
   //   if (price) {
-  //     fetch(`http://localhost:5000/companies/${id}`, {
+  //     fetch(`https://visa-processing.onrender.com/companies/${id}`, {
   //       method: "PATCH",
   //       headers: {
   //         "content-type": "application/json",
@@ -31,7 +31,7 @@ const Completed = () => {
     isLoading,
     refetch,
   } = useQuery("completedData", () =>
-    fetch("http://localhost:5000/completed/", {
+    fetch("https://visa-processing.onrender.com/completed/", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -40,9 +40,9 @@ const Completed = () => {
       })
   );
   refetch();
- 
+
   // const { data: fixedData } = useQuery("fixedData", () =>
-  //   fetch(`http://localhost:5000/comapnies/`, {
+  //   fetch(`https://visa-processing.onrender.com/comapnies/`, {
   //     method: "GET",
   //   })
   //     .then((res) => res.json())
@@ -84,7 +84,7 @@ const Completed = () => {
                 <th scope="col" class="py-3 px-6">
                   Status
                 </th>
-               
+
                 {/* <th scope="col" class="py-3 px-6">
                   Fixed any price
                 </th> */}

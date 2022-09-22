@@ -12,7 +12,7 @@ const CompanyStatus = () => {
   const navigate = useNavigate();
   const email = user?.email;
   const { data: admin } = useQuery("admin", () =>
-    fetch(`http://localhost:5000/users/${email}`, {
+    fetch(`https://visa-processing.onrender.com/users/${email}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ const CompanyStatus = () => {
       status,
     };
     if (status) {
-      fetch(`http://localhost:5000/companies/${id}`, {
+      fetch(`https://visa-processing.onrender.com/companies/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -46,7 +46,7 @@ const CompanyStatus = () => {
     e.target.reset();
 
     if (status === "Completed") {
-      fetch(`http://localhost:5000/completed`, {
+      fetch(`https://visa-processing.onrender.com/completed`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -66,7 +66,7 @@ const CompanyStatus = () => {
     refetch,
     isLoading,
   } = useQuery("statusData", () =>
-    fetch(`http://localhost:5000/companies/${id}`, {
+    fetch(`https://visa-processing.onrender.com/companies/${id}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -91,7 +91,7 @@ const CompanyStatus = () => {
       price,
     };
     if (price) {
-      fetch(`http://localhost:5000/companies/${id}`, {
+      fetch(`https://visa-processing.onrender.com/companies/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -152,7 +152,10 @@ const CompanyStatus = () => {
       </div>
       {admin?.data?.role === "admin" && statusData?.status !== "Completed" && (
         <>
-          <form onSubmit={handleStatus} className="lg:flex justify-center items-center">
+          <form
+            onSubmit={handleStatus}
+            className="lg:flex justify-center items-center"
+          >
             <div className="form-control w-[200px]">
               <label className="label">
                 <span className="label-text text-green-400">Update Status</span>

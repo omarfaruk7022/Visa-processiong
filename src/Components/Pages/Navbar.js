@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const email = user?.email;
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${email}`)
+    fetch(`https://visa-processing.onrender.com/users/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setProfileInfo(data?.data);
