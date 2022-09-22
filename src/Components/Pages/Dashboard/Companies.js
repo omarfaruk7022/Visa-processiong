@@ -190,7 +190,7 @@ const Companies = () => {
                           <Link to={`companyEdit/${data._id}`}>
                             <button
                               type="button"
-                              class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              class="btn btn-outline btn-success"
                             >
                               Edit
                             </button>
@@ -200,7 +200,7 @@ const Companies = () => {
                           <button
                             onClick={() => handleDelete(data._id)}
                             type="button"
-                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            class="btn btn-outline hover:border-0 text-red-500 hover:bg-red-500"
                           >
                             Delete
                           </button>
@@ -305,7 +305,7 @@ const Companies = () => {
                     </div>
                   </div>
 
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-success btn-outline">
                     Submit
                   </button>
                 </form>

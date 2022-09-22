@@ -168,11 +168,12 @@ const CompanyStatus = () => {
             </div>
 
             <div className="ml-2 mt-10 ">
+
               <button
                 type="submit"
-                className="w-[200px] btn btn-primary"
+                className="w-[200px] btn btn-outline btn-success"
               >
-                Post
+                Save
               </button>
             </div>
           </form>
@@ -192,7 +193,7 @@ const CompanyStatus = () => {
                   id="price"
                 />
               </div>
-              <button type="submit" className="btn btn-primary ml-2">
+              <button type="submit" className="btn  btn-outline btn-success ml-2">
                 Submit
               </button>
             </div>
