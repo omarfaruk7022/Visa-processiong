@@ -134,7 +134,7 @@ const Companies = () => {
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Completed/Processing
+                  Completed/Negotiating
                 </th>
                 <th scope="col" class="py-3 px-6">
                   Action

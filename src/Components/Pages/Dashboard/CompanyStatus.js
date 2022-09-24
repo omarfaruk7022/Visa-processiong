@@ -162,7 +162,7 @@ const CompanyStatus = () => {
               </label>
               <select name="status" className="select select-bordered">
                 <option default>Select a status</option>
-                <option>Processing</option>
+                <option>Negotiating</option>
                 <option>Completed</option>
               </select>
             </div>
