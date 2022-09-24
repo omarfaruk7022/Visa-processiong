@@ -47,7 +47,6 @@ const Companies = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("Poof! Your file has been deleted!", {});
         fetch(`https://visa-processing.onrender.com/companies/${id}`, {
           method: "DELETE",
         })
@@ -65,21 +64,35 @@ const Companies = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.companyName.value;
-    const address = e.target.companyAddress.value;
-    const vacancy = Number(e.target.vacancy.value);
+    const country = e.target.companyAddress.value;
+    const category = e.target.category.value;
+    const quantity = Number(e.target.vacancy.value);
+    const gender = e.target.gender.value;
     const salary = Number(e.target.companySalary.value);
-    const maleFemale = e.target.maleFemale.value;
+    const duty = e.target.duty.value;
+    const nature = e.target.nature.value;
 
     const inputData = {
       name,
-      address,
-      vacancy,
+      country,
+      quantity,
       salary,
-
-      maleFemale,
+      category,
+      duty,
+      nature,
+      gender
     };
     console.log(inputData);
-    if (name && address && vacancy && salary && maleFemale) {
+    if (
+      name &&
+      country &&
+      quantity &&
+      salary &&
+      gender &&
+      category &&
+      duty &&
+      nature
+    ) {
       fetch("https://visa-processing.onrender.com/companies", {
         method: "POST",
         headers: {
@@ -122,19 +135,28 @@ const Companies = () => {
                 </th>
 
                 <th scope="col" class="py-3 px-6">
-                  Address
+                  Country
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Vacancy
+                  Category
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Male/Female
+                  Quantity
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Gender
                 </th>
                 <th scope="col" class="py-3 px-6">
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Completed/Negotiating
+                  Duty Hours
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Job nature
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Completed / Negotiating
                 </th>
                 <th scope="col" class="py-3 px-6">
                   Action
@@ -161,20 +183,19 @@ const Companies = () => {
                     >
                       {data?.name}
                     </th>
-                    <td class="py-4 px-6">{data?.address}</td>
+                    <td class="py-4 px-6">{data?.country}</td>
 
-                    <td class="py-4 px-6">{data?.vacancy}</td>
-                    <td class="py-4 px-6">{data?.maleFemale}</td>
+                    <td class="py-4 px-6">{data?.category}</td>
+                    <td class="py-4 px-6">{data?.quantity}</td>
+                    <td class="py-4 px-6">{data?.gender}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
-                    {
-                      data?.status ? (
-                         
-                        <td class="py-4 px-6 text-green-400">{data?.status}</td>
-                      ) : (
-                        <span className="ml-12 ">N/A</span>
-                        
-                      )
-                    }
+                    <td class="py-4 px-6">{data?.duty}</td>
+                    <td class="py-4 px-6">{data?.nature}</td>
+                    {data?.status ? (
+                      <td class="py-4 px-6 text-green-400">{data?.status}</td>
+                    ) : (
+                      <span className="ml-12 ">N/A</span>
+                    )}
 
                     <td class="py-4 px-6">
                       <Link
@@ -245,63 +266,99 @@ const Companies = () => {
                       id="name"
                     />
                   </div>
-                  <div class="">
+
+                  <div className="">
+                    <label class="sr-only" for="email">
+                      Company Country
+                    </label>
+                    <input
+                      name="companyAddress"
+                      class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
+                      placeholder="Company Address"
+                      type="text"
+                      id="address"
+                    />
+                  </div>
+                  <div className="lg:flex ">
                     <div className="">
                       <label class="sr-only" for="email">
-                        Company Address
+                        Category
                       </label>
                       <input
-                        name="companyAddress"
-                        class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-                        placeholder="Company Address"
+                        name="category"
+                        class="  w-[220px] p-3 text-sm border-gray-200 rounded-lg "
+                        placeholder="Job Category"
                         type="text"
                         id="address"
                       />
                     </div>
+
+                    <div>
+                      <div className="form-control w-[220px] lg:ml-2">
+                        <select
+                          name="gender"
+                          className="select select-bordered"
+                        >
+                          <option default>Select a Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Both</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="lg:flex my-2">
+                    <div>
+                      <div className="form-control w-[220px]">
+                        <select name="duty" className="select select-bordered">
+                          <option default>Select a Duty Hours</option>
+                          <option>8 Hours</option>
+                          <option>10 Hours</option>
+                          <option>12 Hours</option>
+                        </select>
+                      </div>
+                    </div>
                     <div className="">
+                      <div className="form-control w-[220px] lg:ml-2">
+                        <select
+                          name="nature"
+                          className="select select-bordered"
+                        >
+                          <option default>Select a Job Nature</option>
+                          <option>Construction</option>
+                          <option>Maintenance</option>
+                          <option>Hospital</option>
+                          <option>Project</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="lg:flex">
+                    <div>
                       <label class="sr-only" for="email">
-                        Amount of vacancy
+                        Quantity
                       </label>
                       <input
                         name="companyVacancy"
-                        class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-                        placeholder="Vacancy"
+                        class="w-[220px]  p-3 text-sm border-gray-200 rounded-lg my-2"
+                        placeholder="Quantity"
                         type="number"
                         id="vacancy"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <div className="form-control w-[200px]">
-                      <label className="label">
-                        <span className="label-text text-green-400">
-                          Male/Female
-                        </span>
-                      </label>
-                      <select
-                        name="maleFemale"
-                        className="select select-bordered"
-                      >
-                        <option default>Select a status</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Both</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="">
-                      <label class="sr-only" for="email">
-                        Salary range
-                      </label>
-                      <input
-                        name="companySalary"
-                        class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-                        placeholder="Salary range"
-                        type="number"
-                        id="salary"
-                      />
+                    <div>
+                      <div className="">
+                        <label class="sr-only" for="email">
+                          Salary
+                        </label>
+                        <input
+                          name="companySalary"
+                          class="w-[220px] lg:ml-2 p-3 text-sm border-gray-200 rounded-lg my-2"
+                          placeholder="Salary range"
+                          type="number"
+                          id="salary"
+                        />
+                      </div>
                     </div>
                   </div>
 

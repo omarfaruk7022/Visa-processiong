@@ -7,21 +7,34 @@ const CompanyEdit = () => {
   const handleEdit = (e) => {
     e.preventDefault();
     const name = e.target.companyName.value;
-    const address = e.target.companyAddress.value;
-    const vacancy = Number(e.target.vacancy.value);
+    const country = e.target.companyAddress.value;
+    const category = e.target.category.value;
+    const quantity = Number(e.target.vacancy.value);
+    const gender = e.target.gender.value;
     const salary = Number(e.target.companySalary.value);
-    const maleFemale = e.target.maleFemale.value;
+    const duty = e.target.duty.value;
+    const nature = e.target.nature.value;
 
     const editedData = {
       name,
-      address,
-      vacancy,
+      country,
+      quantity,
       salary,
-
-      maleFemale,
+      category,
+      duty,
+      nature,
+      gender,
     };
-    console.log(editedData);
-    if (name && address && vacancy && salary && maleFemale) {
+    if (
+      name &&
+      country &&
+      quantity &&
+      salary &&
+      gender &&
+      category &&
+      duty &&
+      nature
+    ) {
       fetch(`https://visa-processing.onrender.com/companies/${id}`, {
         method: "PUT",
         headers: {
@@ -42,7 +55,7 @@ const CompanyEdit = () => {
   };
 
   return (
-    <div className="lg:w-[380px] m-auto">
+    <div className="modal-box m-auto">
       <form onSubmit={handleEdit}>
         <div>
           <label class="sr-only" for="email">
@@ -56,78 +69,102 @@ const CompanyEdit = () => {
             id="name"
           />
         </div>
-        <div class="">
+
+        <div className="">
+          <label class="sr-only" for="email">
+            Company Country
+          </label>
+          <input
+            name="companyAddress"
+            class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
+            placeholder="Company Address"
+            type="text"
+            id="address"
+          />
+        </div>
+        <div className="lg:flex ">
           <div className="">
             <label class="sr-only" for="email">
-              Company Address
+              Category
             </label>
             <input
-              name="companyAddress"
-              class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-              placeholder="Company Address"
+              name="category"
+              class="  w-[220px] p-3 text-sm border-gray-200 rounded-lg "
+              placeholder="Job Category"
               type="text"
               id="address"
             />
           </div>
+
+          <div>
+            <div className="form-control w-[220px] lg:ml-2">
+              <select name="gender" className="select select-bordered">
+                <option default>Select a Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Both</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="lg:flex my-2">
+          <div>
+            <div className="form-control w-[220px]">
+              <select name="duty" className="select select-bordered">
+                <option default>Select a Duty Hours</option>
+                <option>8 Hours</option>
+                <option>10 Hours</option>
+                <option>12 Hours</option>
+              </select>
+            </div>
+          </div>
           <div className="">
+            <div className="form-control w-[220px] lg:ml-2">
+              <select name="nature" className="select select-bordered">
+                <option default>Select a Job Nature</option>
+                <option>Construction</option>
+                <option>Maintenance</option>
+                <option>Hospital</option>
+                <option>Project</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="lg:flex">
+          <div>
             <label class="sr-only" for="email">
-              Amount of vacancy
+              Quantity
             </label>
             <input
               name="companyVacancy"
-              class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-              placeholder="Vacancy"
+              class="w-[220px]  p-3 text-sm border-gray-200 rounded-lg my-2"
+              placeholder="Quantity"
               type="number"
               id="vacancy"
             />
           </div>
-
-          {/* <div>
-                <label class="sr-only" for="email">
-                  Vacancy/Visa
-                </label>
-                <input
-                  name="companyVacancy"
-                  class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-                  placeholder="Company vacancy"
-                  type="number"
-                  id="vacancy"
-                />
-              </div> */}
-        </div>
-        <div>
-          <div className="form-control w-[200px]">
-            <label className="label">
-              <span className="label-text text-green-400">Male/Female</span>
-            </label>
-            <select name="maleFemale" className="select select-bordered">
-              <option default>Select a status</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Both</option>
-            </select>
+          <div>
+            <div className="">
+              <label class="sr-only" for="email">
+                Salary
+              </label>
+              <input
+                name="companySalary"
+                class="w-[220px] lg:ml-2 p-3 text-sm border-gray-200 rounded-lg my-2"
+                placeholder="Salary range"
+                type="number"
+                id="salary"
+              />
+            </div>
           </div>
         </div>
 
-        <div>
-          <div className="">
-            <label class="sr-only" for="email">
-              Salary range
-            </label>
-            <input
-              name="companySalary"
-              class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-              placeholder="Salary range"
-              type="number"
-              id="salary"
-            />
-          </div>
-        </div>
-
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-success btn-outline">
           Submit
         </button>
       </form>
+
+      
     </div>
   );
 };

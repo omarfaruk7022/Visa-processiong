@@ -128,7 +128,7 @@ const CompanyStatus = () => {
             </>
           )}
 
-          {statusData?.status === "Processing" && (
+          {statusData?.status === "Negotiating" && (
             <>
               <svg
                 role="status"

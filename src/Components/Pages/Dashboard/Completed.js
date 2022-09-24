@@ -1,8 +1,25 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import auth from "../../../firebase.init";
 import Loader from "../Loader";
 
 const Completed = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const email = user?.email;
+  const { data: admin } = useQuery("admin", () =>
+    fetch(`https://visa-processing.onrender.com/users/${email}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        return data;
+      })
+  );
   // const handleSubmit = (id, e) => {
   //   e.preventDefault();
   //   const price = e.target.price.value;
@@ -40,6 +57,28 @@ const Completed = () => {
       })
   );
   refetch();
+  // const handleDelete = (id) => {
+  //   swal({
+  //     title: "Are you sure?",
+  //     text: "Once deleted, you will not be able to recover this  file!",
+  //     icon: "warning",
+  //     buttons: true,
+  //     dangerMode: true,
+  //   }).then((willDelete) => {
+  //     if (willDelete) {
+  //       fetch(`http://localhost:5000/completed/${id}`, {
+  //         method: "DELETE",
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //           swal("Yayy", "Company Deleted Successfully", "success");
+  //         });
+  //     } else {
+  //       swal("Your imaginary file is safe!");
+  //     }
+  //   });
+  // };
 
   // const { data: fixedData } = useQuery("fixedData", () =>
   //   fetch(`https://visa-processing.onrender.com/comapnies/`, {
@@ -106,6 +145,22 @@ const Completed = () => {
                     <td class="py-4 px-6">{data?.maleFemale}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
                     <td class="py-4 px-6 text-green-400">Completed</td>
+                    <td class="py-4 px-6">
+                      {" "}
+                      {/* {admin?.data?.role === "admin" && (
+                        <>
+                          <td class="py-4 px-6">
+                            <button
+                              onClick={() => handleDelete(data._id)}
+                              type="button"
+                              class="btn btn-outline hover:border-0 text-red-500 hover:bg-red-500"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </>
+                      )} */}
+                    </td>
                   </tr>
                 </tbody>
               </>
