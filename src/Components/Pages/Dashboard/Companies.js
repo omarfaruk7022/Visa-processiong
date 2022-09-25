@@ -221,7 +221,7 @@ const Companies = () => {
                           <button
                             onClick={() => handleDelete(data._id)}
                             type="button"
-                            class="btn btn-outline hover:border-0 text-red-500 hover:bg-red-500"
+                            class="btn btn-outline btn-error"
                           >
                             Delete
                           </button>

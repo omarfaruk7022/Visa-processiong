@@ -109,19 +109,28 @@ const Completed = () => {
                 </th>
 
                 <th scope="col" class="py-3 px-6">
-                  Address
+                 Country 
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Vacancy
+                  Category
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Male/Female
+                  Quantity
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Gender
                 </th>
                 <th scope="col" class="py-3 px-6">
                   Salary
                 </th>
                 <th scope="col" class="py-3 px-6">
-                  Status
+                  Duty Hours
+                </th>
+                <th scope="col" class="py-3 px-6">
+                 Jon Nature
+                </th>
+                <th scope="col" class="py-3 px-6">
+                 Status
                 </th>
 
                 {/* <th scope="col" class="py-3 px-6">
@@ -139,11 +148,15 @@ const Completed = () => {
                     >
                       {data?.name}
                     </th>
-                    <td class="py-4 px-6">{data?.address}</td>
+                    <td class="py-4 px-6">{data?.country}</td>
 
-                    <td class="py-4 px-6">{data?.vacancy}</td>
-                    <td class="py-4 px-6">{data?.maleFemale}</td>
+                    <td class="py-4 px-6">{data?.category}</td>
+                    <td class="py-4 px-6">{data?.quantity}</td>
+
+                    <td class="py-4 px-6">{data?.gender}</td>
                     <td class="py-4 px-6">{data?.salary}</td>
+                    <td class="py-4 px-6">{data?.duty}</td>
+                    <td class="py-4 px-6">{data?.nature}</td>
                     <td class="py-4 px-6 text-green-400">Completed</td>
                     <td class="py-4 px-6">
                       {" "}
