@@ -123,8 +123,8 @@ const CompanyStatus = () => {
           <span className="text-5xl mr-5 p-2.5">{statusData?.status} </span>
           {statusData?.price && (
             <>
-              <h1>in price : </h1>
-              <span className="text-green-400"> {statusData?.price}</span>
+              <h1> Per visa :  </h1>
+              <span className="text-green-600"> {statusData?.price} Riyal Fixed</span>
             </>
           )}
 
@@ -188,7 +188,7 @@ const CompanyStatus = () => {
                 <input
                   name="price"
                   class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
-                  placeholder="Price"
+                  placeholder="Per visa rate "
                   type="number"
                   id="price"
                 />

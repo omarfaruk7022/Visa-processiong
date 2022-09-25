@@ -14,8 +14,7 @@ const DashboardHome = () => {
           Job Orders
         </h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2000 so
-          far.
+          Here are the Job orders section. you can Click the Button to to check the jobs status.
         </p>
       </Link>
      <Link
@@ -26,8 +25,7 @@ const DashboardHome = () => {
           Completed
         </h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2000 so
-          far.
+         There are the list of confirmed job orders.
         </p>
       </Link>
      

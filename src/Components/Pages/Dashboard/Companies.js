@@ -80,7 +80,7 @@ const Companies = () => {
       category,
       duty,
       nature,
-      gender
+      gender,
     };
     console.log(inputData);
     if (
@@ -192,10 +192,25 @@ const Companies = () => {
                     <td class="py-4 px-6">{data?.duty}</td>
                     <td class="py-4 px-6">{data?.nature}</td>
                     {data?.status ? (
-                      <td class="py-4 px-6 text-green-400">{data?.status}</td>
+                      <td class="py-4 px-6 text-green-400">{data?.status}
+                      {
+                      data?.status === "Completed" && data?.price ?  (
+                        
+                        <>
+                        <span className="text-gray-600">/ Per visa rate :  {data?.price} Riyal</span>
+                           
+                        </>
+                      ) :(
+                        <>
+                        <span className="text-gray-600">/ Visa rate is Negotiating...</span>
+                        </>
+                      )
+                    }
+                      </td>
                     ) : (
                       <span className="ml-12 ">N/A</span>
                     )}
+                    
 
                     <td class="py-4 px-6">
                       <Link
@@ -239,8 +254,8 @@ const Companies = () => {
         {admin?.data?.role === "admin" && (
           <>
             <button
-              class=" mt-5 inline-block px-8 py-3 text-sm font-medium text-indigo-600 border rounded transition border-current hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring hover:text-green-400"
-              href="/download"
+              class=" mt-5 inline-block px-6 py-3 text-sm font-medium text-indigo-600 border rounded transition border-current hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring hover:text-green-400"
+             
             >
               <label
                 htmlFor="my-modal-6"
@@ -302,7 +317,8 @@ const Companies = () => {
                           <option default>Select a Gender</option>
                           <option>Male</option>
                           <option>Female</option>
-                          <option>Both</option>
+                          <option>Both</option> 
+                          <option>Others</option>
                         </select>
                       </div>
                     </div>
@@ -328,7 +344,9 @@ const Companies = () => {
                           <option>Construction</option>
                           <option>Maintenance</option>
                           <option>Hospital</option>
+                          <option>Factory</option>
                           <option>Project</option>
+                          <option>Others</option>
                         </select>
                       </div>
                     </div>
