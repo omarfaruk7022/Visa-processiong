@@ -20,6 +20,7 @@ const Companies = () => {
         return data;
       })
   );
+  console.log(admin);
 
   // const {id} = useParams()
   // console.log(id)
@@ -55,9 +56,7 @@ const Companies = () => {
             console.log(data);
             swal("Yayy", "Company Deleted Successfully", "success");
           });
-      } else {
-        swal("Your imaginary file is safe!");
-      }
+      } 
     });
   };
   //   const [companyData, setCompanyData] = useState();
@@ -68,7 +67,7 @@ const Companies = () => {
     const category = e.target.category.value;
     const quantity = Number(e.target.vacancy.value);
     const gender = e.target.gender.value;
-    const salary = Number(e.target.companySalary.value);
+    const salary = e.target.companySalary.value;
     const duty = e.target.duty.value;
     const nature = e.target.nature.value;
 
@@ -192,25 +191,25 @@ const Companies = () => {
                     <td class="py-4 px-6">{data?.duty}</td>
                     <td class="py-4 px-6">{data?.nature}</td>
                     {data?.status ? (
-                      <td class="py-4 px-6 text-green-400">{data?.status}
-                      {
-                      data?.status === "Completed" && data?.price ?  (
-                        
-                        <>
-                        <span className="text-gray-600">/ Per visa rate :  {data?.price} Riyal</span>
-                           
-                        </>
-                      ) :(
-                        <>
-                        <span className="text-gray-600">/ Visa rate is Negotiating...</span>
-                        </>
-                      )
-                    }
+                      <td class="py-4 px-6 text-green-400">
+                        {data?.status}
+                        {data?.status === "Completed" && data?.price ? (
+                          <>
+                            <span className="text-gray-600">
+                              / Per visa rate : {data?.price} Taka
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="text-gray-600">
+                              / Visa rate is Negotiating...
+                            </span>
+                          </>
+                        )}
                       </td>
                     ) : (
-                      <span className="ml-12 ">N/A</span>
+                      <span className="ml-12">N/A</span>
                     )}
-                    
 
                     <td class="py-4 px-6">
                       <Link
@@ -253,10 +252,7 @@ const Companies = () => {
       <div>
         {admin?.data?.role === "admin" && (
           <>
-            <button
-              class=" mt-5 inline-block px-6 py-3 text-sm font-medium text-indigo-600 border rounded transition border-current hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring hover:text-green-400"
-             
-            >
+            <button class=" mt-5 inline-block px-6 py-3 text-sm font-medium text-indigo-600 border rounded transition border-current hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring hover:text-green-400">
               <label
                 htmlFor="my-modal-6"
                 className=" modal-button cursor-pointer"
@@ -317,7 +313,7 @@ const Companies = () => {
                           <option default>Select a Gender</option>
                           <option>Male</option>
                           <option>Female</option>
-                          <option>Both</option> 
+                          <option>Both</option>
                           <option>Others</option>
                         </select>
                       </div>
@@ -334,22 +330,30 @@ const Companies = () => {
                         </select>
                       </div>
                     </div>
-                    <div className="">
-                      <div className="form-control w-[220px] lg:ml-2">
-                        <select
-                          name="nature"
-                          className="select select-bordered"
-                        >
-                          <option default>Select a Job Nature</option>
-                          <option>Construction</option>
-                          <option>Maintenance</option>
-                          <option>Hospital</option>
-                          <option>Factory</option>
-                          <option>Project</option>
-                          <option>Others</option>
-                        </select>
-                      </div>
+                    <div className="form-control w-[220px] lg:ml-2">
+                      <label class="sr-only" for="email">
+                        Job nature
+                      </label>
+                      <input
+                        name="nature"
+                        class="w-full p-3 text-sm border-gray-200 rounded-lg "
+                        placeholder="Job Nature"
+                        type="text"
+                        id="nature"
+                      />
                     </div>
+                    {/* <div className="">
+                      <label class="sr-only" for="email">
+                        Job nature
+                      </label>
+                      <input
+                        name="nature"
+                        class="w-full p-3 text-sm border-gray-200 rounded-lg my-2"
+                        placeholder="Job Nature"
+                        type="text"
+                        id="nature"
+                      />
+                    </div> */}
                   </div>
                   <div className="lg:flex">
                     <div>
@@ -373,7 +377,7 @@ const Companies = () => {
                           name="companySalary"
                           class="w-[220px] lg:ml-2 p-3 text-sm border-gray-200 rounded-lg my-2"
                           placeholder="Salary range"
-                          type="number"
+                          type="text"
                           id="salary"
                         />
                       </div>

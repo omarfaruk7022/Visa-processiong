@@ -123,8 +123,8 @@ const CompanyStatus = () => {
           <span className="text-5xl mr-5 p-2.5">{statusData?.status} </span>
           {statusData?.price && (
             <>
-              <h1> Per visa :  </h1>
-              <span className="text-green-600"> {statusData?.price} Riyal Fixed</span>
+              <h1> Per visa:  </h1>
+              <span className="text-green-600"> {statusData?.price} Taka Fixed</span>
             </>
           )}
 

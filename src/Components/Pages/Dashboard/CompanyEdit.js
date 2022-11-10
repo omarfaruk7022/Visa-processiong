@@ -11,7 +11,7 @@ const CompanyEdit = () => {
     const category = e.target.category.value;
     const quantity = Number(e.target.vacancy.value);
     const gender = e.target.gender.value;
-    const salary = Number(e.target.companySalary.value);
+    const salary = e.target.companySalary.value;
     const duty = e.target.duty.value;
     const nature = e.target.nature.value;
 
@@ -120,13 +120,16 @@ const CompanyEdit = () => {
           </div>
           <div className="">
             <div className="form-control w-[220px] lg:ml-2">
-              <select name="nature" className="select select-bordered">
-                <option default>Select a Job Nature</option>
-                <option>Construction</option>
-                <option>Maintenance</option>
-                <option>Hospital</option>
-                <option>Project</option>
-              </select>
+              <label class="sr-only" for="email">
+                Job nature
+              </label>
+              <input
+                name="nature"
+                class="w-full p-3 text-sm border-gray-200 rounded-lg "
+                placeholder="Job Nature"
+                type="text"
+                id="nature"
+              />
             </div>
           </div>
         </div>
@@ -152,7 +155,7 @@ const CompanyEdit = () => {
                 name="companySalary"
                 class="w-[220px] lg:ml-2 p-3 text-sm border-gray-200 rounded-lg my-2"
                 placeholder="Salary range"
-                type="number"
+                type="text"
                 id="salary"
               />
             </div>
@@ -163,8 +166,6 @@ const CompanyEdit = () => {
           Submit
         </button>
       </form>
-
-      
     </div>
   );
 };

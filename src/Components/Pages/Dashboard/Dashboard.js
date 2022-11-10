@@ -63,33 +63,7 @@ const Dashboard = () => {
               </Link>
             </li>
 
-            {/* <li>
-              <Link
-                to="/dashboard/ACE"
-                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] "
-              >
-                {" "}
-               Idol ACE
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/SFS"
-                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] "
-              >
-                {" "}
-                SFS{" "}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/trading"
-                className="border-b-4 border-transparent hover:text-primary hover:border-current text-[15px] "
-              >
-                {" "}
-                Trading
-              </Link>
-            </li> */}
+           
           </ul>
         </div>
       </div>
